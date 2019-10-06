@@ -2196,7 +2196,7 @@ class MaskRCNN():
             loss = (
                 tf.reduce_mean(layer.output, keepdims=True)
                 * self.config.LOSS_WEIGHTS.get(name, 1.))
-            if self.keras_model.metrics_tensors is None:
+            if not hasattr(self.keras_model, 'metrics_tensors')
                 self.keras_model.metrics_tensors = []
             self.keras_model.metrics_tensors.append(loss)
 
